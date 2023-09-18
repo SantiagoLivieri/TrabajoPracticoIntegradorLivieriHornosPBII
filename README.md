@@ -1,6 +1,8 @@
 # TrabajoPracticoIntegradorLivieriHornosPBII
 
 
-IDE Eclipse
-Junit 4
-Jdk java 11
+* IDE Eclipse
+  
+* Junit 4 version
+  
+* Jdk java 11 version
