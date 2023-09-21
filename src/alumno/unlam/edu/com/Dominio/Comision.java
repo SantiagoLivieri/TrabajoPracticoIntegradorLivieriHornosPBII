@@ -1,11 +1,14 @@
 package alumno.unlam.edu.com.Dominio;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
 public class Comision {
+	//Aca pueden ir todas las instancias de los examenes
 	
 	private Integer id;
 	private Materia materia;
@@ -15,9 +18,9 @@ public class Comision {
 	private Aula aula;
 	private Set<Profesor> profesores;
 	private Set<Alumno> alumnos;
-	private Map<Alumno, Nota> resgistroNotas;
+	private List<RegistroDeNotasDeExamen> resgistroNotas;
 	
-	 public Comision(Integer id, Materia materia, CicloLectivo cicloLectivo, String turno, String dia,Aula aula) {
+	 public Comision(Integer id, Materia materia, CicloLectivo cicloLectivo, String turno, String dia) {
 		 super();
 		 this.id = id;
 		 this.materia = materia;
@@ -26,7 +29,7 @@ public class Comision {
 		 this.dia = dia;
 		 this.profesores = new HashSet<>();
 		 this.alumnos = new HashSet<>();
-		 this.resgistroNotas = new HashMap<>();
+		 this.resgistroNotas = new ArrayList<>();
 	 }
 	 
 	

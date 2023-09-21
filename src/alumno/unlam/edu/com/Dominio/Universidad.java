@@ -12,8 +12,6 @@ public class Universidad {
 	private Set<CicloLectivo> ciclosLectivos;
 	private Set<Comision> comision;
 	private Set<Aula> aulas;
-	private TipoNota tipoDeNota;
-	//private List<HistoriaAcademico> historialAcademico;
 	
 	public Universidad() {
 		materias = new ArrayList<>();
@@ -22,6 +20,15 @@ public class Universidad {
 		ciclosLectivos = new HashSet<>();
 		comision = new HashSet<>();
 		aulas = new HashSet<>();
-	 //historialAcademico = new ArrayList<>();
 	}
+	
+	public boolean agregarMateria (Materia materia) {
+		if(materias.contains(materia)) {
+			return false;
+			
+		}materias.add(materia);
+		return true;
+	}
+	
+	
 }
