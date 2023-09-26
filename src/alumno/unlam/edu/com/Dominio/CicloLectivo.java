@@ -17,39 +17,46 @@ public class CicloLectivo {
 		this.finalCuatrimestre = finalCuatrimestre;
 	}
 
-	
-	public boolean NoSeRepitanCiclosLectivos (LocalDate inicioCuatrimestre1, LocalDate finalCuatrimestre1) {
-		if(inicioCuatrimestre == inicioCuatrimestre1){
+	public boolean NoSeRepitanCiclosLectivos(LocalDate inicioCuatrimestre1, LocalDate finalCuatrimestre1) {
+		if (inicioCuatrimestre == inicioCuatrimestre1) {
 			return false;
-		}else if (finalCuatrimestre == finalCuatrimestre1) {
+		} else if (finalCuatrimestre == finalCuatrimestre1) {
 			return false;
 		}
 		return true;
 	}
-	
-	
-	
 
+	public LocalDate getIncioInscripciones() {
+		return incioInscripciones;
+	}
+
+	public void setIncioInscripciones(LocalDate incioInscripciones) {
+		this.incioInscripciones = incioInscripciones;
+	}
+
+	public LocalDate getFinalInscripciones() {
+		return finalInscripciones;
+	}
+
+	public void setFinalInscripciones(LocalDate finalInscripciones) {
+		this.finalInscripciones = finalInscripciones;
+	}
 
 	public LocalDate getFinalCuatrimestre() {
 		return finalCuatrimestre;
 	}
 
-
 	public void setFinalCuatrimestre(LocalDate finalCuatrimestre) {
 		this.finalCuatrimestre = finalCuatrimestre;
 	}
-
 
 	public LocalDate getInicioCuatrimestre() {
 		return inicioCuatrimestre;
 	}
 
-
 	public void setInicioCuatrimestre(LocalDate inicioCuatrimestre) {
 		this.inicioCuatrimestre = inicioCuatrimestre;
 	}
-
 
 	@Override
 	public int hashCode() {

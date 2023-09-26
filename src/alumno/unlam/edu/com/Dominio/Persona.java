@@ -11,10 +11,22 @@ public class Persona {
 
 	public Persona(String nombreYApellido, String fechaNacimineto, Integer DNI, String eMail, String telefono) {
 		this.nombreYApellido = nombreYApellido;
-		this.fechaNacimineto = fechaNacimineto;	
+		this.fechaNacimineto = fechaNacimineto;
 		this.DNI = DNI;
 		this.eMail = eMail;
 		this.telefono = telefono;
+	}
+
+	public Integer getDNI() {
+		return DNI;
+	}
+
+	public String getNombreYApellido() {
+		return nombreYApellido;
+	}
+
+	public void setNombreYApellido(String nombreYApellido) {
+		this.nombreYApellido = nombreYApellido;
 	}
 
 	@Override
