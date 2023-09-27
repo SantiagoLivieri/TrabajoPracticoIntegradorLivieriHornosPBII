@@ -25,6 +25,21 @@ public class Universidad {
 		aulas = new HashSet<>();
 	}
 
+	public Integer obtenerNota(Integer dniAlumno, Integer idMateria) {
+		Materia materia = buscarMateriaPorCodigo(idMateria);
+
+		Integer nota = 0;
+
+		for (Comision comision : comision) {
+			if (comision.buscarAlumno(dniAlumno) != null
+					&& comision.getMateria().getNombreMateria().equals(materia.getNombreMateria())) {
+				nota = comision.buscarNotaAlumno(dniAlumno);
+			}
+		}
+
+		return nota;
+	}
+
 	public boolean registrarNota(Integer idComision, Integer dniAlumno, Nota nota) {
 		Comision comision = buscarComisionPorId(idComision);
 		Alumno alumno = buscarAlumnoPorDni(dniAlumno);

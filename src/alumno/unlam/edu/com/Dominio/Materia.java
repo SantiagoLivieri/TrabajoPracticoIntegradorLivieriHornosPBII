@@ -59,6 +59,16 @@ public class Materia {
 	public Integer getCodigoMateria() {
 		return codigoMateria;
 	}
+	
+	
+
+	public String getNombreMateria() {
+		return materia;
+	}
+
+	public void setMateria(String materia) {
+		this.materia = materia;
+	}
 
 	@Override
 	public int hashCode() {

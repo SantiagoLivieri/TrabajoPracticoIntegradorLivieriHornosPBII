@@ -13,8 +13,10 @@ import alumno.unlam.edu.com.Dominio.Aula;
 import alumno.unlam.edu.com.Dominio.CicloLectivo;
 import alumno.unlam.edu.com.Dominio.Comision;
 import alumno.unlam.edu.com.Dominio.Materia;
+import alumno.unlam.edu.com.Dominio.Nota;
 import alumno.unlam.edu.com.Dominio.Profesor;
 import alumno.unlam.edu.com.Dominio.RegistroDeNotasDeExamen;
+import alumno.unlam.edu.com.Dominio.TipoNota;
 import alumno.unlam.edu.com.Dominio.Universidad;
 
 public class TestComision {
@@ -289,5 +291,78 @@ public class TestComision {
 		universidad.asignarAulaALaComision(COD_COMISION, DNI_PROF, aula);
 		// Validacion
 		assertNotNull(comision.getAula());
+	}
+	
+	@Test
+	public void QueSePuedaObtenerLaNotaDeUnAlumno() {
+		// Preparacion
+		Comision comision;
+		Materia materia;
+		CicloLectivo cicloLectivo;
+		Aula aula;
+		Profesor profesor;
+		Alumno alumno;
+		Universidad universidad;
+		Nota nota;
+		
+		final Integer NOTA_ESPERADA = 7;
+		
+		final String NOMBRE_UNI = "Unlam";
+
+		final Integer COD_COMISION = 002;
+		final String TURNO = "NOCHE";
+		final String DIA = "MIERCOLES";
+
+		final Integer COD_MATERIA = 0001;
+		final String DESCRIPCION = "Programacion Basica";
+		final String MATERIA = "Programacion Basica";
+
+		final Integer ID_AULA = 1;
+
+		final LocalDate INICIO_SEG_CUATRIMESTRE = LocalDate.of(2023, 8, 14);
+		final LocalDate FINAL_SEG_CUATRIMESTRE = LocalDate.of(2023, 12, 2);
+		final LocalDate INCIO_INSCRIPCIONES = LocalDate.of(2023, 7, 31);
+		final LocalDate FINAL_INSCRIPCIONES = LocalDate.of(2023, 8, 3);
+
+
+
+		final String FECHA_NACIMIENTO = "22-02-1986";
+		final String NOMBRE_APELLIDO = "Enzo Perez";
+		final Integer DNI = 30560720;
+		
+		final TipoNota tipo = TipoNota.Promocionado;
+		final Integer valor = 7;
+
+		// Ejecucion
+		universidad = new Universidad(NOMBRE_UNI);
+
+		cicloLectivo = new CicloLectivo(INCIO_INSCRIPCIONES, FINAL_INSCRIPCIONES, INICIO_SEG_CUATRIMESTRE,
+				FINAL_SEG_CUATRIMESTRE);
+
+		materia = new Materia(MATERIA, COD_MATERIA, DESCRIPCION);
+
+		comision = new Comision(COD_COMISION, materia, cicloLectivo, TURNO, DIA);
+
+		alumno = new Alumno(NOMBRE_APELLIDO, FECHA_NACIMIENTO, DNI);
+
+		aula = new Aula(ID_AULA);
+		
+		nota = new Nota(tipo,valor);
+		
+		universidad.agregarMateria(materia);
+		
+		comision.setMateria(materia);
+
+		comision.agregarAlumno(alumno);
+
+		universidad.agregarComision(comision);
+		
+		comision.agregarRegistro(DNI, nota);
+		
+
+		Integer notaBuscada = universidad.obtenerNota(DNI, COD_MATERIA);
+		
+		// Validacion
+		assertEquals(NOTA_ESPERADA, notaBuscada);
 	}
 }

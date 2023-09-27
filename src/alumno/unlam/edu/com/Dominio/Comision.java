@@ -18,7 +18,7 @@ public class Comision {
 	private Aula aula;
 	private Set<Profesor> profesores;
 	private Set<Alumno> alumnos;
-	private List<RegistroDeNotasDeExamen> resgistroNotas;
+	private List<RegistroDeNotasDeExamen> registroNotas;
 
 	public Comision(Integer id, Materia materia, CicloLectivo cicloLectivo, String turno, String dia) {
 		super();
@@ -29,9 +29,28 @@ public class Comision {
 		this.dia = dia;
 		this.profesores = new HashSet<>();
 		this.alumnos = new HashSet<>();
-		this.resgistroNotas = new ArrayList<>();
+		this.registroNotas = new ArrayList<>();
 	}
-
+	
+	public void agregarRegistro(Integer dniAlumno, Nota nota) {
+		RegistroDeNotasDeExamen registro = new RegistroDeNotasDeExamen(buscarAlumno(dniAlumno), nota);
+		registroNotas.add(registro);
+	}
+	
+	
+	
+	public Integer buscarNotaAlumno(Integer dniAlumno) {
+		Integer nota = 0;
+		
+		for (RegistroDeNotasDeExamen registro : registroNotas) {
+			if (registro.getAlumno().getDNI() == dniAlumno) {
+				nota = registro.getNotas().getValor();
+			}
+		}
+		
+		return nota;
+	}
+	
 	public void agregarProfesor() {
 		Profesor profe = new Profesor(null, null, 1, null, null);
 		profesores.add(profe);
@@ -67,6 +86,15 @@ public class Comision {
 				break;
 			}
 		}
+	}
+	
+	public Alumno buscarAlumno(Integer dni) {
+		for (Alumno alumno : alumnos) {
+			if (alumno.getDNI() == dni) {
+				return alumno;
+			}
+		}
+		return null;
 	}
 
 	public Integer getId() {
