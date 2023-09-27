@@ -14,6 +14,21 @@ public class Alumno extends Persona{
 			this.setFechaIngreso(fechaIngreso);
 			this.materiasAprobadas = new ArrayList<>();
 		}
+		
+		public Materia buscarMateriaAprobada(Integer id) {
+			Materia materiaBuscada = null;
+			
+			for (Materia materia : materiasAprobadas) {
+				if (materia.getCodigoMateria() == id) {
+					materiaBuscada = materia;
+				}
+			}
+			return materiaBuscada;
+		}
+		
+		public void agregarMateriaAprobada(Materia materia) {
+			materiasAprobadas.add(materia);
+		}
 
 		public LocalDate getFechaIngreso() {
 			return fechaIngreso;

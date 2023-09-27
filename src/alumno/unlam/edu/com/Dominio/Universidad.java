@@ -25,6 +25,21 @@ public class Universidad {
 		aulas = new HashSet<>();
 	}
 
+	public List<Materia> obtenerMateriasFaltantesAlumno(Integer dni) {
+		Alumno alumno = buscarAlumnoPorDni(dni);
+		
+		List<Materia> materiasFaltantes = new ArrayList<>(); 
+		List<Materia> materiasAprobadas = alumno.getMateriasAprobadas();
+		
+		for (Materia materia : materias) {
+			if (alumno.buscarMateriaAprobada(materia.getCodigoMateria()) == null) {
+				materiasFaltantes.add(materia);
+			}
+		}
+		
+		return materiasFaltantes;
+	}
+	
 	public Integer obtenerNota(Integer dniAlumno, Integer idMateria) {
 		Materia materia = buscarMateriaPorCodigo(idMateria);
 
